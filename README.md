@@ -49,16 +49,18 @@ sage: msg = msg.replace("X","\x00")
 sage: msg
 "this challenge was supposed to be babyrsa but i screwed up and now i have to redo the challenge.\nhopefully this challenge proves to be more worthy of 250 points compared to the 200 points i gave out for babyrsa :D :D :D\nyour super secret flag is: \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\nyou know what i'm going to add an extra line here just to make your life miserable so deal with it"
 ```
-Right after the "XXX", there are 98 other characters, 1 null byte, so we have 99. If the flag is `m`, the original message is gonna be `M = msg + (2^8)^99*m`. You can imagine: `9999955599999 = 9999900099999 + 555*(10^5`. In this case the `10` is `2^8`. <br>
-From this point, using Sage we can find the roots for that equation of CopperSmith.
+Right after the "XXX", there are 98 other characters, 1 null byte, so we have 99. If the flag is `m`, the original message is gonna be `M = msg + (2^8)^99*m`.<br>
+You can imagine: `9999955599999 = 9999900099999 + 555*(10^5`.<br>
+From this point, using Sage we can find the roots for f(x).
 ```python
+sage: msg = int(msg.encode("hex"), 16)
 sage: P.<x> = PolynomialRing(Zmod(n))
-sage: f = (M + ((2^8)^99)*x)^5 - c
+sage: f = (msg + ((2^8)^99)*x)^5 - c
 sage: f = f.monic()
 sage: f.small_roots()
 []
 ```
-Hmm, there is no roots found for this equation. The default epsilon sage has is `1/8`. Looks like we have to increase the upperbound of the algorithm. 
+Hmm, no root found. The default epsilon sage has is `1/8`. Looks like we have to increase the upperbound of the calculation. 
 ```python
 sage: f.small_roots(epsilon=1/13)
 [1248984295175060908103635259382502837476510996520290172164518365629374785269360163379181788573297776902028363990820288716208404068947393627909757]
