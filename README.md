@@ -44,7 +44,7 @@ f(x) = (M + m)^e - c
 Coppersmith states that `Coppersmith’s algorithm can be used to find this integer solution x(0): x(0) < N^(1/e).`
 However, if we use the whole part `XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\nyou know what i'm going to add an extra line here just to make your life miserable so deal with it` then `x` is pretty large in this case: `(2^8)^159 > N^(1/5)`. How about using only that XXX part as `m`. Seems promising.<br>
 First, let's change all of those `X` into `\x00`. 
-```
+```python
 sage: msg = msg.replace("X","\x00")
 sage: msg
 "this challenge was supposed to be babyrsa but i screwed up and now i have to redo the challenge.\nhopefully this challenge proves to be more worthy of 250 points compared to the 200 points i gave out for babyrsa :D :D :D\nyour super secret flag is: \x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\nyou know what i'm going to add an extra line here just to make your life miserable so deal with it"
@@ -71,7 +71,6 @@ sage: hex(int(m[0]))[2:-1].decode("hex")
 ```
 And here is the full message:
 ```python
-sage: hex(int(m[0]*256^99+M))[2:-1].decode("hex")
+sage: hex((int(m[0]^8)^99+M))[2:-1].decode("hex")
 "this challenge was supposed to be babyrsa but i screwed up and now i have to redo the challenge.\nhopefully this challenge proves to be more worthy of 250 points compared to the 200 points i gave out for babyrsa :D :D :D\nyour super secret flag is: flag{bu7_0N_4_w3Dn3sdAy_iN_a_c4f3_i_waTcH3dD_17_6eg1n_aga1n}\nyou know what i'm going to add an extra line here just to make your life miserable so deal with it"
 ```
-
