@@ -41,7 +41,7 @@ We already know part of message, so it would be
 ```
 f(x) = (M + m)^e - c
 ```
-Coppersmith state that `Coppersmith’s algorithm can be used to find this integer solution x(0): x(0) < N^(1/e).`
+Coppersmith states that `Coppersmith’s algorithm can be used to find this integer solution x(0): x(0) < N^(1/e).`
 However, if we use the whole part `XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\nyou know what i'm going to add an extra line here just to make your life miserable so deal with it` then `x` is pretty large in this case: `(2^8)^159 > N^(1/5)`. How about using only that XXX part as `m`. Seems promising.<br>
 First, let's change all of those `X` into `\x00`. 
 ```
