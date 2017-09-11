@@ -35,7 +35,7 @@ sage: m = pow(c, 1/5)
 sage: hex(int(m))[2:-1].decode('hex')
 'welcome to uiuctf!\nyour super secret flag is: flag{c4n_w3_get_s0m3b0dy_t0_sm1th_some_c0pper_pls}'
 ```
-2ez4rtz. Wait, I'm not RTZ! :sad:
+
 <hr>
 
 ### PapaRSA - 250
