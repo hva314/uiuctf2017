@@ -1,5 +1,7 @@
 # uiuctf2017
 
+Official Write-up has been moved to [Blue's Little Blog](https://hva314.github.io/blog/2017/05/01/UIUCTF-2017-Crypto.html)
+
 ### BabyRSA - 200
 
 ```python 
